@@ -1,0 +1,111 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #71b7e6, #9b59b6);
+}
+
+.wrapper{
+  height: 400px;
+  width: 320px;
+  perspective: 1000px; /* Cria o efeito de profundidade 3D */
+}
+
+.wrapper .card{
+  position: relative;
+  height: 100%;
+  width: 100%;
+  transform-style: preserve-3d; /* Permite que os filhos herdem o 3D */
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Quando o mouse passa no wrapper, o cartão gira 180 graus */
+.wrapper:hover .card{
+  transform: rotateY(180deg);
+}
+
+.card .front, .card .back{
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background: #fff;
+  border-radius: 10px;
+  backface-visibility: hidden; /* Esconde a face que está "atrás" */
+  box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+  padding: 5px;
+}
+
+/* Estilo da Face Frontal */
+.card .front img{
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+/* Estilo da Face Traseira */
+.card .back{
+  transform: rotateY(180deg); /* Começa invertida para ficar correta após o giro */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  text-align: center;
+}
+
+.card .back img{
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 5px solid #9b59b6;
+}
+
+.back .info .title{
+  font-size: 25px;
+  font-weight: 600;
+  color: #333;
+}
+
+.back .info p{
+  font-size: 16px;
+  color: #666;
+}
+
+/* Redes Sociais na Face Traseira */
+.back .icons{
+  display: flex;
+  margin-top: 15px;
+}
+
+.back .icons a{
+  height: 40px;
+  width: 40px;
+  background: #9b59b6;
+  color: #fff;
+  font-size: 18px;
+  margin: 0 8px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.back .icons a:hover{
+  background: transparent;
+  color: #9b59b6;
+  border-color: #9b59b6;
+}
